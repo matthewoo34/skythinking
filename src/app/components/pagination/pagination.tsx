@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 interface PaginationProps {
     currentPage: number;
     totalPages: number;
@@ -10,20 +8,22 @@ interface PaginationProps {
 
 export const Pagination = (props: PaginationProps) => {
     const { currentPage, totalPages, goToNextPage, goToPreviousPage } = props;
+    const isFirstPage = currentPage === 1;
+    const isLastPage = currentPage === totalPages;
 
     return (
         <div>
             Page: {currentPage} / {totalPages}
             <button
-                className='p-4'
+                className={`${isFirstPage && 'opacity-20'} p-4`}
                 onClick={goToPreviousPage}
-                disabled={currentPage === 1}>
+                disabled={isFirstPage}>
                 {'<'}
             </button>
             <button
-                className='p-4'
+                className={`${isLastPage && 'opacity-20'} p-4`}
                 onClick={goToNextPage}
-                disabled={currentPage === totalPages}>
+                disabled={isLastPage}>
                 {'>'}
             </button>
         </div>
