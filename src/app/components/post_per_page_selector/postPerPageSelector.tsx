@@ -1,12 +1,10 @@
-import { useEffect } from "react";
-
 interface PostPerPageSelectorProps {
     setPostPerPage: (value: number) => void;
 }
 
-
 export const PostPerPageSelector = (props: PostPerPageSelectorProps) => {
     const { setPostPerPage } = props;
+    const options = [5, 10, 15, 20];
 
     const handlePostPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const pageNum = parseInt(event.target.value)
@@ -19,18 +17,11 @@ export const PostPerPageSelector = (props: PostPerPageSelectorProps) => {
             <select
                 className='ml-2'
                 onChange={handlePostPerPageChange}>
-                <option>
-                    5
-                </option>
-                <option>
-                    10
-                </option>
-                <option>
-                    15
-                </option>
-                <option>
-                    20
-                </option>
+                {options.map((value) => (
+                    <option key={value + 'pageOption'} value={value}>
+                        {value}
+                    </option>
+                ))}
             </select>
         </div>
     );
