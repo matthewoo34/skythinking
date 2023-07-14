@@ -1,4 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Typescript, and custom hook has been used.
+The css has used the Tailwind CSS.
+The testing framework is Jest.
+
+## Functionalities
+1. Display Blog Post data from the API endpoint https://jsonplaceholder.typicode.com/posts
+2. Hover on the post id will turn the background green
+3. Upon clicking on the post id, it will only show the post details.
+4. A back function from the post details to the blog posts
+5. Frontend Pagination
+6. Post per page selector
 
 ## Getting Started
 
