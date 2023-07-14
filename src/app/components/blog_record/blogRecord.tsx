@@ -1,24 +1,34 @@
+import { InPostContext } from '@/app/context/InPostContext';
 import { Post } from '@/model/Post';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 interface BlogRecordProps {
     post: Post;
-    inPost: number | null;
-    setInPost: (postId: number | null) => void;
 }
 
-
 export const BlogRecord = (props: BlogRecordProps) => {
-    const { post, inPost, setInPost } = props;
+    const { post } = props;
+    const { inPost, setInPost } = useContext(InPostContext);
+
     return (
-        <tr >
+        <tr>
             <td
                 className={`${!inPost && 'cursor-pointer hover:bg-green-500'} record w-1/5 text-center`}
                 onClick={() => setInPost(post.id)}>
                 {post.id}
             </td>
-            <td className='record w-1/5'>{post.title}</td>
-            <td className='record w-3/5'>{post.body}</td>
+            <td className='record w-1/5'>
+                <div
+                    className={`${!inPost && 'record-content'}`}>
+                    {post.title}
+                </div>
+            </td>
+            <td className='record w-3/5'>
+                <div
+                    className={`${!inPost && 'record-content'}`}>
+                    {post.body}
+                </div>
+            </td>
         </tr>
 
     );
