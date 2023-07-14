@@ -52,7 +52,7 @@ const BlogPosts: React.FC = () => {
         } else {
             setDisplayPost(displayCurrentPagePost(currentPage));
         }
-    }, [inPost, currentPage, posts]);
+    }, [inPost, currentPage, posts, postPerPage]);
 
     useEffect(() => {
         handleDisplayPost();
