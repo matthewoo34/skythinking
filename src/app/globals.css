@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.table-title {
+  @apply bg-green-500 border-4 border-yellow-400 p-4;
+}
+
+.record {
+  @apply bg-white border-4 border-yellow-400 p-4;
+}

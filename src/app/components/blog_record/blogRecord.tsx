@@ -13,12 +13,12 @@ export const BlogRecord = (props: BlogRecordProps) => {
     return (
         <tr >
             <td
-                className={`${!inPost && 'cursor-pointer hover:bg-green-500'} bg-white border-4 border-yellow-400 w-1/5 text-center p-4`}
+                className={`${!inPost && 'cursor-pointer hover:bg-green-500'} record w-1/5 text-center`}
                 onClick={() => setInPost(post.id)}>
                 {post.id}
             </td>
-            <td className='bg-white custom-border w-1/5  p-4'>{post.title}</td>
-            <td className='bg-white custom-border w-3/5  p-4 '>{post.body}</td>
+            <td className='record w-1/5'>{post.title}</td>
+            <td className='record w-3/5'>{post.body}</td>
         </tr>
 
     );

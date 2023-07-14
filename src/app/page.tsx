@@ -22,6 +22,7 @@ const BlogPosts: React.FC = () => {
         const response = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
         setPosts(response.data);
       } catch (error) {
+        confirm('Unable to load the Posts, please try again')
         console.error('Error fetching posts:', error);
       }
     };
@@ -65,22 +66,23 @@ const BlogPosts: React.FC = () => {
         <table className="table-fixed border border-collapse">
           <thead>
             <tr>
-              <th className="bg-green-500 border-4 border-yellow-400  p-4"></th>
-              <th className="bg-green-500 border-4 border-yellow-400  p-4">Title</th>
-              <th className="bg-green-500 border-4 border-yellow-400  p-4">Body</th>
+              <th className="table-title"></th>
+              <th className="table-title">Title</th>
+              <th className="table-title">Body</th>
             </tr>
           </thead>
-          {
-            displayPost.map((post) => (
-              <BlogRecord
-                key={post.id}
-                post={post}
-                inPost={inPost}
-                setInPost={setInPost} />
-            ))
-          }
+          <tbody>
+            {
+              displayPost.map((post) => (
+                <BlogRecord
+                  key={post.id}
+                  post={post}
+                  inPost={inPost}
+                  setInPost={setInPost} />
+              ))
+            }
+          </tbody>
         </table>
-
         {
           !inPost &&
           <Pagination
@@ -90,7 +92,6 @@ const BlogPosts: React.FC = () => {
             totalPages={totalPages}
           />
         }
-
       </div>
     </main>
   );
