@@ -34,7 +34,7 @@ const usePagination = (pageSize: number, totalItems: number): PaginationResult =
         if (totalPages < currentPage) {
             goToPage(totalPages);
         }
-    }, [totalPages])
+    }, [totalPages, currentPage])
 
     useEffect(() => {
         checkTotalPageRange();

@@ -11,25 +11,25 @@ export const BlogRecord = (props: BlogRecordProps) => {
     const { inPost, setInPost } = useContext(InPostContext);
 
     return (
-        <tr>
+        <tr data-testid={`blog-record`}>
             <td
                 className={`${!inPost && 'cursor-pointer hover:bg-green-500'} record w-1/5 text-center`}
-                onClick={() => setInPost(post.id)}>
-                {post.id}
+                onClick={() => { if (!inPost) setInPost(post?.id); }}>
+                {post?.id}
             </td>
             <td className='record w-1/5'>
                 <div
                     className={`${!inPost && 'record-content'}`}>
-                    {post.title}
+                    {post?.title}
                 </div>
             </td>
             <td className='record w-3/5'>
                 <div
                     className={`${!inPost && 'record-content'}`}>
-                    {post.body}
+                    {post?.body}
                 </div>
             </td>
-        </tr>
+        </tr >
 
     );
 };

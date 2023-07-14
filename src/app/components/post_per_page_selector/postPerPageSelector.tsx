@@ -1,9 +1,10 @@
 interface PostPerPageSelectorProps {
     setPostPerPage: (value: number) => void;
+    postPerPage: number;
 }
 
 export const PostPerPageSelector = (props: PostPerPageSelectorProps) => {
-    const { setPostPerPage } = props;
+    const { postPerPage, setPostPerPage } = props;
     const options = [5, 10, 15, 20];
 
     const handlePostPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -16,7 +17,10 @@ export const PostPerPageSelector = (props: PostPerPageSelectorProps) => {
             Posts per page:
             <select
                 className='ml-2'
-                onChange={handlePostPerPageChange}>
+                onChange={handlePostPerPageChange}
+                value={postPerPage}
+                data-testid={'post-per-page-select'}
+            >
                 {options.map((value) => (
                     <option key={value + 'pageOption'} value={value}>
                         {value}

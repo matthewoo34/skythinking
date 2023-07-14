@@ -16,7 +16,7 @@ const BlogPosts: React.FC = () => {
     const [postPerPage, setPostPerPage] = useState<number>(5);
     const [posts, setPosts] = useState<Post[]>([]);
     const [displayPost, setDisplayPost] = useState<Post[]>([]);
-    const { inPost, setInPost } = useContext(InPostContext);
+    const { inPost } = useContext(InPostContext);
     const { currentPage, totalPages, goToNextPage, goToPreviousPage } = usePagination(postPerPage, posts.length);
 
     useEffect(() => {
@@ -26,11 +26,10 @@ const BlogPosts: React.FC = () => {
                 const response = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
                 setPosts(response.data);
                 setIsLoading(false);
+                console.log(response.data);
+
             } catch (error) {
-                if (confirm('Unable to load the Posts, please try again')) {
-                    fetchPosts();
-                }
-                console.error('Error fetching posts:', error);
+                alert(`Unable to load the Posts, please try again later \n error:${error}`);
             }
         };
 
@@ -103,6 +102,7 @@ const BlogPosts: React.FC = () => {
                                         totalPages={totalPages}
                                     />
                                     <PostPerPageSelector
+                                        postPerPage={postPerPage}
                                         setPostPerPage={setPostPerPage} />
                                 </div>
                             }

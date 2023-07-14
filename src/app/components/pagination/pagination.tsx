@@ -12,15 +12,18 @@ export const Pagination = (props: PaginationProps) => {
     const isLastPage = currentPage === totalPages;
 
     return (
-        <div>
+        <div
+            data-testid={'page-info'}>
             Page: {currentPage} / {totalPages}
             <button
+                data-testid={'page-prev-btn'}
                 className={`${isFirstPage && 'opacity-20'} p-4`}
                 onClick={goToPreviousPage}
                 disabled={isFirstPage}>
                 {'<'}
             </button>
             <button
+                data-testid={'page-next-btn'}
                 className={`${isLastPage && 'opacity-20'} p-4`}
                 onClick={goToNextPage}
                 disabled={isLastPage}>
